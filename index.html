@@ -1,32 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Ramen Rating App</title>
-   <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramen Rating App</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Amatic+SC:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
-   <div id="app-container">
-       <div id="ramen-menu"></div>
-       <div id="ramen-detail">
-           <h2 id="ramen-name"></h2>
-           <h3 id="ramen-restaurant"></h3>
-           <p id="ramen-rating"></p>
-           <p id="ramen-comment"></p>
-       </div>
-       <form id="new-ramen">
-           <input type="text" id="new-name" placeholder="Ramen Name" required>
-           <input type="text" id="new-restaurant" placeholder="Restaurant" required>
-           <input type="text" id="new-image" placeholder="Image URL" required>
-           <input type="number" id="new-rating" placeholder="Rating" min="1" max="5" required>
-           <textarea id="new-comment" placeholder="Comment"></textarea>
-           <button type="submit">Add Ramen</button>
-       </form>
-   </div>
-   <script src="index.js"defer></script>
+    <nav class="main-nav">
+        <div class="nav-content">
+            <div class="nav-logo">
+                <span class="logo-text">🍜 Ramen Ratings</span>
+            </div>
+            <div class="nav-links">
+                <button class="nav-btn active" data-view="all">All Ramen</button>
+                <button class="nav-btn" data-view="top-rated">Top Rated</button>
+                <button class="nav-btn" data-view="by-restaurant">By Restaurant</button>
+            </div>
+            <button class="add-ramen-btn" id="toggleForm">+ Add Ramen</button>
+        </div>
+    </nav>
+
+    <header class="hero-section">
+        <h1>Discover Amazing Ramen</h1>
+        <p>Rate and explore the best ramen dishes from top restaurants</p>
+    </header>
+
+    <div id="app-container">
+        <div class="view-controls">
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Search ramen or restaurants...">
+                <button id="searchBtn">🔍</button>
+            </div>
+            <div class="sort-controls">
+                <select id="sortSelect">
+                    <option value="name">Sort by Name</option>
+                    <option value="rating">Sort by Rating</option>
+                    <option value="restaurant">Sort by Restaurant</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="content-area">
+            <div id="ramen-menu">
+                <!-- Ramen images will be dynamically inserted here -->
+            </div>
+            
+            <div id="ramen-detail" class="hidden modal">
+                <div class="modal-content">
+                    <button class="close-detail" aria-label="Close">×</button>
+                    <div class="detail-image">
+                        <img id="detail-img" src="" alt="">
+                    </div>
+                    <div class="detail-info">
+                        <h2 id="ramen-name">Select a Ramen</h2>
+                        <h3 id="ramen-restaurant">Click any ramen to view details</h3>
+                        <p id="ramen-rating">Rating: -/5</p>
+                        <p id="ramen-comment">Comment: No comment yet</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="restaurants-view" class="hidden">
+            <div class="restaurant-list">
+                <!-- Restaurant groups will be inserted here -->
+            </div>
+        </div>
+
+        <form id="new-ramen" class="hidden modal">
+            <div class="modal-content">
+                <div class="form-header">
+                    <h2>Add New Ramen</h2>
+                    <button type="button" class="close-form" aria-label="Close">×</button>
+                </div>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="new-name">Ramen Name</label>
+                        <input type="text" id="new-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="new-restaurant">Restaurant Name</label>
+                        <input type="text" id="new-restaurant" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="new-image">Image URL</label>
+                        <input type="text" id="new-image" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="new-rating">Rating</label>
+                        <div class="rating-input">
+                            <input type="number" id="new-rating" min="1" max="5" required>
+                            <span class="rating-hint">1-5 stars</span>
+                        </div>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="new-comment">Your Comments</label>
+                        <textarea id="new-comment" rows="4"></textarea>
+                    </div>
+                    <div class="form-group full-width">
+                        <button type="submit">Add New Ramen</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-info">
+                <h3>🍜 Ramen Restaurant</h3>
+                <p>by Mpoe Philip</p>
+                <p>Moringa School Software Development Course</p>
+            </div>
+            <div class="footer-nav">
+                <h4>Quick Links</h4>
+                <button class="footer-btn" data-view="all">All Ramen</button>
+                <button class="footer-btn" data-view="top-rated">Top Rated</button>
+                <button class="footer-btn" data-view="by-restaurant">By Restaurant</button>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Ramen Restaurant. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div id="notification" class="hidden">
+        <!-- Notifications will appear here -->
+    </div>
+
+    <script src="index.js" defer></script>
 </body>
 </html>
-
-
-

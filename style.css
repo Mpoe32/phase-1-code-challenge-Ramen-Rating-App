@@ -1,134 +1,540 @@
-/* General Styles */
-body {
-    font-family: 'Arial', sans-serif;
+/* Modern Reset and Variables */
+:root {
+    --primary: #ce1212;
+    --secondary: #37373f;
+    --background: #eee;
+    --card-bg: #FFFFFF;
+    --text: #37373f;
+    --text-light: #666;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --transition: all 0.3s ease;
+    --nav-height: 4rem;
+    --section-padding: 5rem;
+}
+
+* {
     margin: 0;
     padding: 0;
-    background-color: #f8f8f8;
-    color: #333;
+    box-sizing: border-box;
+}
+
+/* General Styles */
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--background);
+    color: var(--text);
     line-height: 1.6;
 }
 
-/* Container for the entire app */
+.hidden {
+    display: none !important;
+}
+
+/* Navigation Styles */
+.main-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--nav-height);
+    background: var(--card-bg);
+    box-shadow: var(--shadow);
+    z-index: 1000;
+}
+
+.nav-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-logo {
+    font-family: 'Amatic SC', cursive;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.nav-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.nav-btn {
+    background: none;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    color: var(--text);
+    cursor: pointer;
+    border-radius: 0.5rem;
+    transition: var(--transition);
+}
+
+.nav-btn:hover {
+    color: var(--primary);
+}
+
+.nav-btn.active {
+    background: var(--primary);
+    color: white;
+}
+
+.add-ramen-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.add-ramen-btn:hover {
+    background: #b31111;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/shoyu.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding: 0 1rem;
+    margin-top: var(--nav-height);
+}
+
+.hero-section h1 {
+    font-family: 'Amatic SC', cursive;
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.hero-section p {
+    font-size: 1.2rem;
+    max-width: 600px;
+}
+
+/* View Controls */
+.view-controls {
+    max-width: 1200px;
+    margin: -2rem auto 2rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
+    background: var(--card-bg);
+    border-radius: 1rem;
+    box-shadow: var(--shadow);
+    position: relative;
+    z-index: 1;
+}
+
+.search-bar {
+    display: flex;
+    gap: 0.5rem;
+    flex: 1;
+}
+
+.search-bar input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: 2px solid transparent;
+    border-radius: 0.5rem;
+    background: var(--background);
+    transition: var(--transition);
+}
+
+.search-bar input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.search-bar button {
+    padding: 0.75rem 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    background: var(--primary);
+    color: white;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.search-bar button:hover {
+    background: #b31111;
+    transform: translateY(-2px);
+}
+
+.sort-controls select {
+    padding: 0.75rem 2rem 0.75rem 1rem;
+    border: 2px solid transparent;
+    border-radius: 0.5rem;
+    background: var(--background);
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.5rem center;
+    background-size: 1.5rem;
+    transition: var(--transition);
+}
+
+.sort-controls select:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+/* Container and Content Area */
 #app-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 0 2rem var(--section-padding);
+}
+
+.content-area {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
 }
 
 /* Ramen Menu Section */
 #ramen-menu {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
 }
 
-#ramen-menu img {
-    width: 100px;
-    height: 100px;
+.ramen-item {
+    position: relative;
+    border-radius: 1rem;
+    overflow: hidden;
+    background: var(--card-bg);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.ramen-item img {
+    width: 100%;
+    aspect-ratio: 1;
     object-fit: cover;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: var(--transition);
 }
 
-#ramen-menu img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+.ramen-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
 }
 
-/* Ramen Details Section */
-#ramen-detail {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
+.ramen-item:hover img {
+    transform: scale(1.1);
 }
 
-#ramen-detail h2 {
-    margin: 0 0 10px;
-    font-size: 2em;
-    color: #4CAF50;
-}
-
-#ramen-detail h3 {
-    margin: 0 0 10px;
-    font-size: 1.5em;
-    color: #555;
-}
-
-#ramen-detail p {
-    margin: 5px 0;
-    font-size: 1.1em;
-    color: #777;
-}
-
-/* New Ramen Form Section */
-#new-ramen {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column; /* Stack form elements vertically */
-    gap: 10px; /* Add space between form elements */
-}
-
-#new-ramen input,
-#new-ramen textarea {
-    width: 100%; /* Full width for inputs */
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 1em;
-}
-
-#new-ramen textarea {
-    resize: vertical; /* Allow vertical resizing */
-    height: 100px; /* Set initial height */
-}
-
-#new-ramen button {
-    background-color: #4CAF50;
+.quick-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
     color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 1em;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
+    transform: translateY(0);
+    transition: var(--transition);
 }
 
-#new-ramen button:hover {
-    background-color: #45a049;
+.quick-info .name {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.stars {
+    color: #FFD700;
+    letter-spacing: 2px;
+    font-size: 1.1rem;
+}
+
+/* Modal Styles */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+}
+
+.modal:not(.hidden) {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 1rem;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    transform: translateY(20px);
+    transition: var(--transition);
+}
+
+.modal:not(.hidden) .modal-content {
+    transform: translateY(0);
+}
+
+/* Form Styles */
+.form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--background);
+}
+
+.form-header h2 {
+    font-family: 'Amatic SC', cursive;
+    font-size: 2.5rem;
+    color: var(--primary);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    font-weight: 500;
+    color: var(--text);
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--background);
+    border-radius: 0.5rem;
+    transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.rating-input {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.rating-hint {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+.form-group button {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.form-group button:hover {
+    background: #b31111;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+/* Restaurant View */
+.restaurant-group {
+    background: var(--card-bg);
+    border-radius: 1rem;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
+}
+
+.restaurant-group h3 {
+    font-family: 'Amatic SC', cursive;
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+}
+
+.restaurant-ramen {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Footer */
+.site-footer {
+    background: var(--secondary);
+    color: white;
+    padding: var(--section-padding) 0 0;
+    margin-top: var(--section-padding);
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+}
+
+.footer-info h3 {
+    font-family: 'Amatic SC', cursive;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.footer-info p {
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 0.5rem;
+}
+
+.footer-nav h4 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.footer-btn {
+    display: block;
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    padding: 0.5rem 0;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.footer-btn:hover {
+    color: var(--primary);
+}
+
+.footer-bottom {
+    margin-top: 3rem;
+    padding: 1.5rem 0;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-bottom p {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Notification */
+#notification {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--card-bg);
+    color: var(--text);
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    box-shadow: var(--shadow-lg);
+    transform: translateX(100%);
+    transition: var(--transition);
+    z-index: 1000;
+}
+
+#notification:not(.hidden) {
+    transform: translateX(0);
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    #ramen-menu img {
-        width: 80px;
-        height: 80px;
+    :root {
+        --section-padding: 3rem;
     }
 
-    #ramen-detail h2 {
-        font-size: 1.5em;
+    .nav-content {
+        padding: 0 1rem;
     }
 
-    #ramen-detail h3 {
-        font-size: 1.2em;
+    .nav-links {
+        display: none;
     }
 
-    #ramen-detail p {
-        font-size: 1em;
+    .hero-section {
+        height: 50vh;
     }
 
-    #new-ramen input,
-    #new-ramen textarea {
-        font-size: 0.9em;
+    .hero-section h1 {
+        font-size: 3rem;
     }
 
-    #new-ramen button {
-        font-size: 0.9em;
+    .view-controls {
+        flex-direction: column;
+        padding: 1.5rem;
+        margin: -1rem 1rem 1rem;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    #ramen-menu {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    }
+
+    .restaurant-ramen {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+
+    .footer-btn {
+        display: inline-block;
+        padding: 0.5rem 1rem;
     }
 }
