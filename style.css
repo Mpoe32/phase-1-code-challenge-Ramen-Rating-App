@@ -1,0 +1,134 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Container for the entire app */
+#app-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Ramen Menu Section */
+#ramen-menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#ramen-menu img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#ramen-menu img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Ramen Details Section */
+#ramen-detail {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+#ramen-detail h2 {
+    margin: 0 0 10px;
+    font-size: 2em;
+    color: #4CAF50;
+}
+
+#ramen-detail h3 {
+    margin: 0 0 10px;
+    font-size: 1.5em;
+    color: #555;
+}
+
+#ramen-detail p {
+    margin: 5px 0;
+    font-size: 1.1em;
+    color: #777;
+}
+
+/* New Ramen Form Section */
+#new-ramen {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column; /* Stack form elements vertically */
+    gap: 10px; /* Add space between form elements */
+}
+
+#new-ramen input,
+#new-ramen textarea {
+    width: 100%; /* Full width for inputs */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+#new-ramen textarea {
+    resize: vertical; /* Allow vertical resizing */
+    height: 100px; /* Set initial height */
+}
+
+#new-ramen button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+#new-ramen button:hover {
+    background-color: #45a049;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #ramen-menu img {
+        width: 80px;
+        height: 80px;
+    }
+
+    #ramen-detail h2 {
+        font-size: 1.5em;
+    }
+
+    #ramen-detail h3 {
+        font-size: 1.2em;
+    }
+
+    #ramen-detail p {
+        font-size: 1em;
+    }
+
+    #new-ramen input,
+    #new-ramen textarea {
+        font-size: 0.9em;
+    }
+
+    #new-ramen button {
+        font-size: 0.9em;
+    }
+}
